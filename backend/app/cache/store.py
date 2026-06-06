@@ -1,4 +1,3 @@
-"""SQLite-backed async cache for npm registry and OSV API responses."""
 from __future__ import annotations
 
 import json
@@ -18,12 +17,6 @@ CREATE TABLE IF NOT EXISTS cache (
 
 
 class CacheStore:
-    """Async key-value cache with TTL, backed by SQLite.
-
-    Namespaces let us partition (e.g. "npm:packument" vs "osv:query")
-    without key collisions.
-    """
-
     def __init__(self, path: str) -> None:
         self._path = path
         self._db: aiosqlite.Connection | None = None
