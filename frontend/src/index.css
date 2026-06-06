@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light; /* Changed to light */
+  }
+
+  html {
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  body {
+    @apply bg-ink-900 text-ink-100 font-sans antialiased;
+    font-feature-settings: 'tnum' 1, 'ss01' 1;
+  }
+
+  /* Subtle grain on the background for atmosphere. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.05) 1px, transparent 0);
+    background-size: 3px 3px;
+    z-index: 0;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
